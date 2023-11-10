@@ -8,7 +8,7 @@ app.use(express.json()); // using the express.json() middleware to make streamin
 app.use(cors()); //using cors middleware which is allowing the origin to make request and get response
 
 app.get("/user", (req, res) => {
-  res.status(200).send("user fetched successfully");
+  res.status(200).send("user fetched api updated successfully");
 });
 
 app.post("/user", (req, res) => {
