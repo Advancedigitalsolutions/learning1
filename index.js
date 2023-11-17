@@ -1,29 +1,37 @@
 require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
-const app = express(); // creating the app with the express function;
+const app = express();
 
-app.use(express.urlencoded({ extended: true })); // used urlencided middleware from the express
-app.use(express.json()); // using the express.json() middleware to make streaming request ans response
-app.use(cors()); //using cors middleware which is allowing the origin to make request and get response
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); 
+app.use(cors());
 
 app.get("/user", (req, res) => {
   res.status(200).send("user fetched api updated successfully");
 });
 
 app.post("/user", (req, res) => {
-  res.status(200).json({ "User created successfully": req.body });
+  res.status(200).json({ message:"User created successfully", data: req.body });
 });
 
-app.patch("/user:id", (req, res) => {
+app.put("/user/:id", (req, res) => {
+  if (req.params.id !== "123") {
+    return res.status(404).send("User not found");
+  }
   res.status(200).send("User updated successfully");
 });
 
-app.delete("/user:id", (req, res) => {
+app.delete("/user/:id", (req, res) => {
+  if(req.params.id !== "123"){
+    return res.status(404).send("User not found");
+  }
   res.status(200).send("User delete successfully");
 });
 
-const PORT = process.env.PORT || 8080; // creating the port for the deployment or can run on 8080 in local;
-app.listen(PORT, async () => {
+const PORT = process.env.PORT || 8080;
+const server = app.listen(PORT, async () => {
   console.log(`App is running on port ${PORT}`);
 });
+
+module.exports = server;
