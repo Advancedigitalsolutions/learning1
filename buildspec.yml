@@ -1,0 +1,25 @@
+version: 0.2
+
+# Specify the runtime version at the top level
+runtime-versions:
+  nodejs: 18
+
+phases:
+  install:
+    commands:
+      # install npm
+      - npm install
+
+  build:
+    commands:
+      # run build script
+      - npm run-script build
+
+artifacts:
+  # include all files required to run application
+  # notably excluded is node_modules, as this will cause overwrite error on deploy
+  files:
+    - package.json
+    - index.js
+    - appspec.yml
+    - scripts/**/*
