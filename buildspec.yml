@@ -2,7 +2,7 @@ version: 0.2
 
 # Specify the runtime version at the top level
 runtime-versions:
-  nodejs: 18
+  nodejs: 16
 
 phases:
   install:
