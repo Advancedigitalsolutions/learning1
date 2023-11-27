@@ -1,1 +1,1 @@
-module.exports.User = ()=> "hello world"
+module.exports.User = ()=> "user model"
