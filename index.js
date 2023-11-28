@@ -1,7 +1,7 @@
 require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
-const User_router = require("./Controllers/User.controllers");
+const User_router = require("./controllers/user.controllers");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
