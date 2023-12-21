@@ -1,11 +1,12 @@
 require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
-const app = express(); // creating the app with the express function;
+const User_router = require("./controllers/user.controllers");
+const app = express();
 
-app.use(express.urlencoded({ extended: true })); // used urlencided middleware from the express
-app.use(express.json()); // using the express.json() middleware to make streaming request ans response
-app.use(cors()); //using cors middleware which is allowing the origin to make request and get response
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 
 app.get("/user", (req, res) => {
   console.log(whoami);
@@ -26,5 +27,10 @@ app.delete("/user:id", (req, res) => {
 
 const PORT = process.env.PORT || 3000; // creating the port for the deployment or can run on 8080 in local;
 app.listen(PORT, async () => {
+
+const PORT = process.env.PORT || 8080;
+const server = app.listen(PORT, async () => {
   console.log(`App is running on port ${PORT}`);
 });
+
+module.exports = server;
