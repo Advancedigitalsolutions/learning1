@@ -8,6 +8,7 @@ app.use(express.json()); // using the express.json() middleware to make streamin
 app.use(cors()); //using cors middleware which is allowing the origin to make request and get response
 
 app.get("/user", (req, res) => {
+  console.log(whoami);
   res.status(200).send("user fetched successfully");
 });
 
@@ -23,7 +24,7 @@ app.delete("/user:id", (req, res) => {
   res.status(200).send("User delete successfully");
 });
 
-const PORT = process.env.PORT || 8080; // creating the port for the deployment or can run on 8080 in local;
+const PORT = process.env.PORT || 3000; // creating the port for the deployment or can run on 8080 in local;
 app.listen(PORT, async () => {
   console.log(`App is running on port ${PORT}`);
 });
